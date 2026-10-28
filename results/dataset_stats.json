@@ -1,0 +1,9 @@
+{
+  "corpus_size": 268893,
+  "query_count": 417,
+  "avg_passage_length_words": 172.80758517328454,
+  "avg_rel_per_query": 3.2997601918465227,
+  "min_rel_per_query": 1,
+  "max_rel_per_query": 18,
+  "sanity_check_passed": true
+}

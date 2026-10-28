@@ -1,0 +1,159 @@
+[
+  {
+    "type": "BM25 Win / Dense Loss",
+    "qid": 15,
+    "query": "are tiger barbs compatible with tetras?",
+    "bm25_ndcg10": 1.0,
+    "dense_ndcg10": 0.3562,
+    "gold_pids": [
+      1925
+    ],
+    "bm25_top3": [
+      {
+        "pid": 1925,
+        "text": "No. Definitely not at the moment, but possibly later on down the road. I assume this is the same tank you ask about here and here. This is a new tank that does not have an established biofilter yet: t"
+      },
+      {
+        "pid": 8406,
+        "text": "Serpae tetras are by nature fin nippers. They are only second to tiger barbs. Although I always wanted to have them again, I restrained myself knowing what they are capable of. It is just their nature"
+      },
+      {
+        "pid": 162,
+        "text": "Tiger barb prefer a well-planted aquarium, that would imitate their original environment. Tetras, in general, also like some plants to hide them from the light. Since there are so many specimens of pl"
+      }
+    ],
+    "dense_top3": [
+      {
+        "pid": 227816,
+        "text": "It depends very much on you whether you need cross brake levers or are fine with levers at your bullhorn bars alone. Here are some questions to ask yourself: Can you break effectively and quickly with"
+      },
+      {
+        "pid": 55,
+        "text": "I have kept all kinds of tetras: cardinal tetras; rummy-nose tetras; balloon red eye tetras; penguin tetras with neons; black neons without any problem. Apart from the tetra species, you can keep harl"
+      },
+      {
+        "pid": 210998,
+        "text": "They appear very similar to Avid BB5 pads.I would take your pads to your local shop and see if they match.The tab on the Avid pad looks to be a little longer but might fit.Tektro also has two numbers "
+      }
+    ],
+    "analysis": "BM25 capitalizes on exact term matching, whereas dense representation drifted to generic semantic neighbors."
+  },
+  {
+    "type": "BM25 Win / Dense Loss",
+    "qid": 338,
+    "query": "is brake fluid water soluble?",
+    "bm25_ndcg10": 1.0,
+    "dense_ndcg10": 0.3562,
+    "gold_pids": [
+      252983
+    ],
+    "bm25_top3": [
+      {
+        "pid": 252983,
+        "text": "Standard automotive brake fluid (DOT 3,4 and 5.1) are made from polyethylene glycol (PEG). PEG is soluble in water, methanol, ethanol, acetonitrile, benzene, and dichloromethane, and is insoluble in d"
+      },
+      {
+        "pid": 248024,
+        "text": "Someone else might have something better, but Id probably just use a portable carpet cleaner with regular solution which goes in it. It should leach most or all of the brake fluid out of the carpet .."
+      },
+      {
+        "pid": 258329,
+        "text": "What is described here is classic excessive water in the brake fluid. The previous application of the brakes prior to failure heated the calipers enough to boil the moisture in the brake fluid and fil"
+      }
+    ],
+    "dense_top3": [
+      {
+        "pid": 260168,
+        "text": "The fluids are all designed for different conditions, more viscous so they stick longer, working temperature ranges, behaviour under pressure ie in the engine bearings etc. Some of the early cars had "
+      },
+      {
+        "pid": 263955,
+        "text": "I would change it. Brake fluid is hygroscopic ie it absorbs water over time and this may be an indication. Brake fluid should be changed on a time interval or number of kilometers anyway so it won\u2019t h"
+      },
+      {
+        "pid": 251301,
+        "text": "There are quite a lot of different fluids inside a modern car. I tried to group them by purpose. Hydraulic Fluids General use: Hydraulic fluids are used to transfer power from one point to another Bra"
+      }
+    ],
+    "analysis": "BM25 capitalizes on exact term matching, whereas dense representation drifted to generic semantic neighbors."
+  },
+  {
+    "type": "Dense Win / BM25 Loss",
+    "qid": 17,
+    "query": "are christmas trees poisonous to rats?",
+    "bm25_ndcg10": 0.0,
+    "dense_ndcg10": 1.0,
+    "gold_pids": [
+      2494
+    ],
+    "bm25_top3": [
+      {
+        "pid": 182261,
+        "text": "Leave the burrow holes and outside places alone. Messing with them is pointless. Rats will always find a place to live if there is food. Put dog food in metal container like a trash can. Leave rat poi"
+      },
+      {
+        "pid": 174225,
+        "text": "Kill the rats, then replace the drain with a metal cover. https://www.amazon.com/Motomco-Tomcat-Bait-Chunx-Pail/dp/B005BV0DD2 I cant say where the rats live, nor if they are coming or going. I cant th"
+      },
+      {
+        "pid": 182269,
+        "text": "Rat poison kills predators, scavengers, and pets. A poisoned rat may very well go outside. A predator would eagerly pounce on a weakened poisoned rat, and a scavenger on a dead poisoned one. I think t"
+      }
+    ],
+    "dense_top3": [
+      {
+        "pid": 2494,
+        "text": "No, Pine and Cedar are generally considered toxic to Rats (and many small mammals) pine should not be used as bedding by extension they should not be offered as chew toys. There are several home remed"
+      },
+      {
+        "pid": 27705,
+        "text": "Wrong...Rats do eat plants and from my experience they especially like herbs. I have tried to grow herbs for years in my city garden and the rats destroy everything within the first week. And unfortun"
+      },
+      {
+        "pid": 31655,
+        "text": "Depends how you define poisonous. Animals and humans who consume the plant wont die, but they may drool, experience nausea and/or vomit. Poinsettia has a bad reputation, but there are far more toxic p"
+      }
+    ],
+    "analysis": "Dense model matches semantic meaning despite vocabulary mismatch where lexical BM25 failed."
+  },
+  {
+    "type": "Dense Win / BM25 Loss",
+    "qid": 36,
+    "query": "do aloe vera plants die after flowering?",
+    "bm25_ndcg10": 0.0,
+    "dense_ndcg10": 1.0,
+    "gold_pids": [
+      20952,
+      20947
+    ],
+    "bm25_top3": [
+      {
+        "pid": 35141,
+        "text": "Aloe vera is monoecious, meaning male and female parts of the flowers are present in each plant. However, there is another problem if you only have one plant; the flowers are whats known as protandrou"
+      },
+      {
+        "pid": 36313,
+        "text": "Youre having a flower! Aloe do indeed flower. It depends on plant maturity, treatment, sunshine, etc. It sounds like youre treating it well. Its not an Aloe vera (barbadensis), its some other species."
+      },
+      {
+        "pid": 26366,
+        "text": "Here are the answers to your questions in order: Cut the leaf as close to the base of the plant as possible to be able to extract as much of the Aloe Vera Gel as possible. About 2-3 inches of leaf sho"
+      }
+    ],
+    "dense_top3": [
+      {
+        "pid": 20947,
+        "text": "It is Agaves that die after flowering, not Aloes. Aloe will continue to grow after the flower stalk blooms. You can cut the flower stem off or leave it to dry. If the plant is becoming leggy it may be"
+      },
+      {
+        "pid": 20952,
+        "text": "Aloe Vera plants need lots of sunlight and will continue to create new growth throughout its life. In order for this to happen the plant must focus more on its new growth than the older leaves and may"
+      },
+      {
+        "pid": 36313,
+        "text": "Youre having a flower! Aloe do indeed flower. It depends on plant maturity, treatment, sunshine, etc. It sounds like youre treating it well. Its not an Aloe vera (barbadensis), its some other species."
+      }
+    ],
+    "analysis": "Dense model matches semantic meaning despite vocabulary mismatch where lexical BM25 failed."
+  }
+]

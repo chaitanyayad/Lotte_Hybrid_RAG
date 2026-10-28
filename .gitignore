@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+data/
+results/embeddings.npy
+results/*.npy
+results/*.npz
+results/*.pkl
+node_modules/
+.DS_Store
