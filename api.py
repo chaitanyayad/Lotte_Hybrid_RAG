@@ -152,27 +152,32 @@ def search(
     ]
 
 
+from src.rag import generate_rag_answer
+
+
 @app.post("/rag", response_model=RAGResponse)
 def rag_generate(req: RAGRequest):
     """
-    RAG endpoint (configured for Claude API in Day 2).
-    Retrieves top-k passages and formats context citations.
+    RAG endpoint: retrieves top-k passages and synthesizes an answer with citations.
     """
     search_res = search(q=req.q, ranker=req.ranker, k=req.k)
-
-    citations = [
-        Citation(n=item.rank, pid=item.pid, text=item.text)
+    passages_payload = [
+        {"rank": item.rank, "pid": item.pid, "text": item.text}
         for item in search_res
     ]
+    rag_result = generate_rag_answer(query=req.q, passages=passages_payload)
 
-    # Placeholder logic until Day 2 Claude API integration
-    answer = f"[Answer synthesized from top-{len(citations)} passages retrieved by {req.ranker}]"
+    citations = [
+        Citation(n=item["n"], pid=item["pid"], text=item["text"])
+        for item in rag_result["citations"]
+    ]
 
     return RAGResponse(
-        answer=answer,
+        answer=rag_result["answer"],
         citations=citations,
         ranker=req.ranker
     )
+
 
 
 if __name__ == "__main__":
