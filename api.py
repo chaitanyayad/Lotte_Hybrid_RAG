@@ -17,10 +17,38 @@ from src.load import load_lotte
 from src.preprocess import tokenize
 from src.sparse import InvertedIndex, TFIDFRetriever, BM25Retriever
 from src.dense import encode_corpus, DenseRetriever
+from contextlib import asynccontextmanager
 from src.fusion import reciprocal_rank_fusion
 
 
-app = FastAPI(title="LoTTE RAG IR Service", version="1.0.0")
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    print("Starting up LoTTE IR service...")
+    try:
+        passages, queries, qrels = load_lotte()
+        STATE["passages"] = passages
+        STATE["queries"] = queries
+        STATE["qrels"] = qrels
+
+        from src.run_day1 import get_preprocessed_corpus
+        tokenized_corpus = get_preprocessed_corpus(passages)
+        idx = InvertedIndex().fit(tokenized_corpus)
+        STATE["tfidf"] = TFIDFRetriever(idx)
+        STATE["bm25"] = BM25Retriever(idx, k1=1.5, b=0.75)
+
+        # Dense retriever
+        embeddings, doc_ids = encode_corpus(passages)
+        STATE["dense"] = DenseRetriever(embeddings, doc_ids)
+
+        STATE["ready"] = True
+        print("LoTTE IR service startup complete and models loaded in memory.")
+    except Exception as e:
+        print(f"Warning during startup (models will be loaded on demand): {e}")
+    yield
+    print("Shutting down LoTTE IR service...")
+
+
+app = FastAPI(title="LoTTE RAG IR Service", version="1.0.0", lifespan=lifespan)
 
 # Enable CORS for local Vite dev server
 app.add_middleware(
@@ -67,30 +95,6 @@ class RAGResponse(BaseModel):
     citations: List[Citation]
     ranker: str
 
-
-@app.on_event("startup")
-def startup_event():
-    print("Starting up LoTTE IR service...")
-    try:
-        passages, queries, qrels = load_lotte()
-        STATE["passages"] = passages
-        STATE["queries"] = queries
-        STATE["qrels"] = qrels
-
-        from src.run_day1 import get_preprocessed_corpus
-        tokenized_corpus = get_preprocessed_corpus(passages)
-        idx = InvertedIndex().fit(tokenized_corpus)
-        STATE["tfidf"] = TFIDFRetriever(idx)
-        STATE["bm25"] = BM25Retriever(idx, k1=1.5, b=0.75)
-
-        # Dense retriever
-        embeddings, doc_ids = encode_corpus(passages)
-        STATE["dense"] = DenseRetriever(embeddings, doc_ids)
-
-        STATE["ready"] = True
-        print("LoTTE IR service startup complete and models loaded in memory.")
-    except Exception as e:
-        print(f"Warning during startup (models will be loaded on demand): {e}")
 
 
 @app.get("/health")
