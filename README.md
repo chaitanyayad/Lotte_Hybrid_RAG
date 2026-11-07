@@ -65,6 +65,27 @@ flowchart TD
 
 ---
 
+## Interactive Dashboard UI
+
+The system features a full-stack, responsive dark-glassmorphic web interface built with **React 19** and **Vite 8**, communicating with the **FastAPI** backend:
+
+### 1. Grounded RAG Answer Panel with Source Citations
+The RAG generation panel synthesizes fact-checked answers with interactive bracket citations (`[1]`, `[2]`). In the summary footer, every referenced source PID is presented as a quick-navigation button:
+
+![Grounded RAG Answer & Citations](results/screenshots/dashboard_rag_answer.png)
+
+### 2. Multi-Ranker Search Interface
+Users can toggle between all four ranking strategies (**Hybrid RRF**, **Dense MiniLM**, **Okapi BM25**, and **Classic TF-IDF**), tune top-$k$ depth (5, 10, 20), toggle the RAG layer on/off, or click curated LoTTE benchmark queries:
+
+![Multi-Ranker Search Dashboard](results/screenshots/dashboard_search.png)
+
+### 3. Interactive Evidence Highlighting
+Clicking any `[n]` citation badge automatically performs smooth scrolling to the exact evidence passage card and triggers a 2-second glowing amber highlight:
+
+![Evidence Passage Highlighting](results/screenshots/dashboard_citation_highlight.png)
+
+---
+
 ## Repository Structure
 
 ```
@@ -157,3 +178,4 @@ Open your browser at **`http://localhost:5173`** to interact with the search eng
 - **Interactive Citations**: RAG answers include bracket markers `[1]..[n]` that click to smoothly scroll to and illuminate the exact source evidence card.
 - **Fail-Safe Abstention**: Grounded prompt instruction refrains from hallucination and returns `'not found'` if evidence is absent.
 - **Complete Test Suite**: 33 passing unit and integration tests covering every single module.
+
