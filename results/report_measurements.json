@@ -1,0 +1,607 @@
+{
+  "system_and_memory": {
+    "stopword_list_size": 198,
+    "stemmer": "PorterStemmer",
+    "vocab_size": 149046,
+    "startup_time_seconds": 11.24,
+    "startup_breakdown_seconds": {
+      "load_lotte": 0.79,
+      "load_tokenized_corpus": 2.35,
+      "build_inverted_index": 5.89,
+      "build_sparse_retrievers": 0.1,
+      "load_faiss_dense": 2.1
+    },
+    "memory_ram_mb": {
+      "initial": 190.84,
+      "after_load": 506.49,
+      "after_tokenized_corpus": 2216.82,
+      "after_inverted_index": 2912.5,
+      "after_sparse_models": 2930.26,
+      "final_with_faiss_and_models": 3727.53,
+      "net_ram_allocated_mb": 3536.69
+    },
+    "faiss_index": {
+      "num_vectors": 268893,
+      "dimension": 384,
+      "dtype": "float32",
+      "size_mb": 393.89
+    }
+  },
+  "latency_benchmarks": {
+    "TF-IDF": {
+      "mean_ms": 45.85,
+      "median_ms": 40.57,
+      "p95_ms": 120.59,
+      "min_ms": 0.3,
+      "max_ms": 180.71
+    },
+    "BM25": {
+      "mean_ms": 45.0,
+      "median_ms": 47.69,
+      "p95_ms": 94.66,
+      "min_ms": 0.22,
+      "max_ms": 213.71
+    },
+    "Dense (MiniLM)": {
+      "mean_ms": 24.44,
+      "median_ms": 22.09,
+      "p95_ms": 31.17,
+      "min_ms": 17.07,
+      "max_ms": 129.81
+    },
+    "Hybrid RRF": {
+      "mean_ms": 0.17,
+      "median_ms": 0.16,
+      "p95_ms": 0.21,
+      "min_ms": 0.12,
+      "max_ms": 1.66
+    },
+    "End-to-End API RAG (top-5 + synthesis)": {
+      "mean_ms": 73.67,
+      "median_ms": 50.07,
+      "p95_ms": 146.8
+    }
+  },
+  "win_loss_tie": {
+    "Dense_vs_BM25": {
+      "wins": 235,
+      "losses": 76,
+      "ties": 106
+    },
+    "Hybrid_vs_Dense": {
+      "wins": 126,
+      "losses": 155,
+      "ties": 136
+    },
+    "Hybrid_vs_BM25": {
+      "wins": 239,
+      "losses": 44,
+      "ties": 134
+    }
+  },
+  "significance_tests": {
+    "Dense_vs_BM25": {
+      "mean_diff": 0.1525,
+      "paired_ttest": {
+        "t_statistic": 10.5558,
+        "p_value": 3.08e-23
+      },
+      "wilcoxon_signed_rank": {
+        "statistic": 9048.5,
+        "p_value": 9.38e-22
+      },
+      "bootstrap_95_ci": {
+        "ci_lower": 0.1246,
+        "ci_upper": 0.1813
+      }
+    },
+    "Hybrid_vs_Dense": {
+      "mean_diff": -0.0302,
+      "paired_ttest": {
+        "t_statistic": -2.8685,
+        "p_value": 0.00433
+      },
+      "wilcoxon_signed_rank": {
+        "statistic": 16452.5,
+        "p_value": 0.0138
+      },
+      "bootstrap_95_ci": {
+        "ci_lower": -0.0513,
+        "ci_upper": -0.0099
+      }
+    }
+  },
+  "bm25_sweep": [
+    {
+      "k1": 0.9,
+      "b": 0.5,
+      "nDCG@10": 0.3292,
+      "Recall@100": 0.6312,
+      "P@10": 0.1048,
+      "MAP": 0.2724
+    },
+    {
+      "k1": 0.9,
+      "b": 0.75,
+      "nDCG@10": 0.3313,
+      "Recall@100": 0.635,
+      "P@10": 0.1084,
+      "MAP": 0.2703
+    },
+    {
+      "k1": 0.9,
+      "b": 0.9,
+      "nDCG@10": 0.317,
+      "Recall@100": 0.6315,
+      "P@10": 0.1067,
+      "MAP": 0.2563
+    },
+    {
+      "k1": 1.2,
+      "b": 0.5,
+      "nDCG@10": 0.3309,
+      "Recall@100": 0.6307,
+      "P@10": 0.1065,
+      "MAP": 0.2717
+    },
+    {
+      "k1": 1.2,
+      "b": 0.75,
+      "nDCG@10": 0.3282,
+      "Recall@100": 0.6399,
+      "P@10": 0.1077,
+      "MAP": 0.2672
+    },
+    {
+      "k1": 1.2,
+      "b": 0.9,
+      "nDCG@10": 0.3143,
+      "Recall@100": 0.6303,
+      "P@10": 0.1062,
+      "MAP": 0.2527
+    },
+    {
+      "k1": 1.5,
+      "b": 0.5,
+      "nDCG@10": 0.3275,
+      "Recall@100": 0.6324,
+      "P@10": 0.1053,
+      "MAP": 0.2694
+    },
+    {
+      "k1": 1.5,
+      "b": 0.75,
+      "nDCG@10": 0.3286,
+      "Recall@100": 0.6381,
+      "P@10": 0.1082,
+      "MAP": 0.2668
+    },
+    {
+      "k1": 1.5,
+      "b": 0.9,
+      "nDCG@10": 0.3103,
+      "Recall@100": 0.632,
+      "P@10": 0.1046,
+      "MAP": 0.2512
+    },
+    {
+      "k1": 2.0,
+      "b": 0.5,
+      "nDCG@10": 0.3246,
+      "Recall@100": 0.6279,
+      "P@10": 0.1036,
+      "MAP": 0.2684
+    },
+    {
+      "k1": 2.0,
+      "b": 0.75,
+      "nDCG@10": 0.3221,
+      "Recall@100": 0.6339,
+      "P@10": 0.1055,
+      "MAP": 0.2635
+    },
+    {
+      "k1": 2.0,
+      "b": 0.9,
+      "nDCG@10": 0.3047,
+      "Recall@100": 0.629,
+      "P@10": 0.1034,
+      "MAP": 0.2458
+    }
+  ],
+  "fusion_sweep": [
+    {
+      "type": "Standard RRF",
+      "k": 10,
+      "dense_weight": null,
+      "nDCG@10": 0.4635,
+      "Recall@100": 0.7903,
+      "P@10": 0.1516,
+      "MAP": 0.3918
+    },
+    {
+      "type": "Standard RRF",
+      "k": 30,
+      "dense_weight": null,
+      "nDCG@10": 0.4562,
+      "Recall@100": 0.7903,
+      "P@10": 0.1494,
+      "MAP": 0.3864
+    },
+    {
+      "type": "Standard RRF",
+      "k": 60,
+      "dense_weight": null,
+      "nDCG@10": 0.4508,
+      "Recall@100": 0.7903,
+      "P@10": 0.1463,
+      "MAP": 0.383
+    },
+    {
+      "type": "Standard RRF",
+      "k": 100,
+      "dense_weight": null,
+      "nDCG@10": 0.4483,
+      "Recall@100": 0.7903,
+      "P@10": 0.1451,
+      "MAP": 0.3814
+    },
+    {
+      "type": "Weighted RRF (k=60)",
+      "k": 60,
+      "dense_weight": 0.5,
+      "nDCG@10": 0.4508,
+      "Recall@100": 0.7903,
+      "P@10": 0.1463,
+      "MAP": 0.383
+    },
+    {
+      "type": "Weighted RRF (k=60)",
+      "k": 60,
+      "dense_weight": 0.7,
+      "nDCG@10": 0.4681,
+      "Recall@100": 0.8017,
+      "P@10": 0.1561,
+      "MAP": 0.3944
+    },
+    {
+      "type": "Weighted RRF (k=60)",
+      "k": 60,
+      "dense_weight": 0.9,
+      "nDCG@10": 0.483,
+      "Recall@100": 0.798,
+      "P@10": 0.16,
+      "MAP": 0.4056
+    },
+    {
+      "type": "Linear Score Fusion",
+      "k": null,
+      "dense_weight": 0.5,
+      "nDCG@10": 0.4665,
+      "Recall@100": 0.788,
+      "P@10": 0.1511,
+      "MAP": 0.3958
+    },
+    {
+      "type": "Linear Score Fusion",
+      "k": null,
+      "dense_weight": 0.7,
+      "nDCG@10": 0.4924,
+      "Recall@100": 0.8004,
+      "P@10": 0.159,
+      "MAP": 0.4188
+    },
+    {
+      "type": "Linear Score Fusion",
+      "k": null,
+      "dense_weight": 0.9,
+      "nDCG@10": 0.4863,
+      "Recall@100": 0.8063,
+      "P@10": 0.1595,
+      "MAP": 0.411
+    }
+  ],
+  "recall_at_k": {
+    "TF-IDF": {
+      "Recall@1": 0.014,
+      "Recall@5": 0.0711,
+      "Recall@10": 0.1016,
+      "Recall@20": 0.1619,
+      "Recall@50": 0.2817,
+      "Recall@100": 0.3821
+    },
+    "BM25": {
+      "Recall@1": 0.1359,
+      "Recall@5": 0.3102,
+      "Recall@10": 0.3973,
+      "Recall@20": 0.4616,
+      "Recall@50": 0.5715,
+      "Recall@100": 0.6381
+    },
+    "Dense (MiniLM)": {
+      "Recall@1": 0.2131,
+      "Recall@5": 0.4426,
+      "Recall@10": 0.5482,
+      "Recall@20": 0.6248,
+      "Recall@50": 0.7191,
+      "Recall@100": 0.798
+    },
+    "Hybrid RRF": {
+      "Recall@1": 0.1986,
+      "Recall@5": 0.4172,
+      "Recall@10": 0.5148,
+      "Recall@20": 0.6088,
+      "Recall@50": 0.7183,
+      "Recall@100": 0.7903
+    }
+  },
+  "metrics_by_query_length": {
+    "Short (<= 6 words)": {
+      "query_count": 210,
+      "BM25": {
+        "P@10": 0.1119,
+        "Recall@100": 0.6544,
+        "MAP": 0.2842,
+        "nDCG@10": 0.3405
+      },
+      "Dense": {
+        "P@10": 0.1619,
+        "Recall@100": 0.8111,
+        "MAP": 0.42,
+        "nDCG@10": 0.4919
+      },
+      "Hybrid": {
+        "P@10": 0.1495,
+        "Recall@100": 0.7976,
+        "MAP": 0.3923,
+        "nDCG@10": 0.457
+      }
+    },
+    "Medium (7-10 words)": {
+      "query_count": 181,
+      "BM25": {
+        "P@10": 0.1017,
+        "Recall@100": 0.6373,
+        "MAP": 0.2509,
+        "nDCG@10": 0.3139
+      },
+      "Dense": {
+        "P@10": 0.153,
+        "Recall@100": 0.7867,
+        "MAP": 0.4055,
+        "nDCG@10": 0.4793
+      },
+      "Hybrid": {
+        "P@10": 0.1436,
+        "Recall@100": 0.8001,
+        "MAP": 0.3784,
+        "nDCG@10": 0.4476
+      }
+    },
+    "Long (>= 11 words)": {
+      "query_count": 26,
+      "BM25": {
+        "P@10": 0.1231,
+        "Recall@100": 0.5128,
+        "MAP": 0.237,
+        "nDCG@10": 0.3336
+      },
+      "Dense": {
+        "P@10": 0.1385,
+        "Recall@100": 0.7715,
+        "MAP": 0.3148,
+        "nDCG@10": 0.4051
+      },
+      "Hybrid": {
+        "P@10": 0.1385,
+        "Recall@100": 0.6625,
+        "MAP": 0.3389,
+        "nDCG@10": 0.423
+      }
+    }
+  },
+  "hard_queries": {
+    "count": 57,
+    "percentage": 13.67,
+    "examples": [
+      {
+        "qid": 20,
+        "query": "does sugar make lemonade flat?",
+        "gold_pids": [
+          16555,
+          16747,
+          14414,
+          14415,
+          14416,
+          16562
+        ],
+        "gold_passage_snippet": "PID 16555: As children, we used to put a strip of clean folded tissue/paper towel in the glass. You might have to repeat a few times....",
+        "bm25_rank1": {
+          "pid": 56508,
+          "snippet": "I dont think this would be essentially different from a backyard lemonade stand. Make sure its something she does for fun, and not something she feels forced to continue with. Thats the biggest downsi"
+        },
+        "dense_rank1": {
+          "pid": 10199,
+          "snippet": "You can make a little heap with the sugar, and then with a sheet of paper you try to push the sheet under the heap to get the sugar. Its not a perfect solution, there is probably sugar remaining but n"
+        },
+        "hybrid_rank1": {
+          "pid": 10199,
+          "snippet": "You can make a little heap with the sugar, and then with a sheet of paper you try to push the sheet under the heap to get the sugar. Its not a perfect solution, there is probably sugar remaining but n"
+        }
+      },
+      {
+        "qid": 21,
+        "query": "how to open a garage door without making noise?",
+        "gold_pids": [
+          14617,
+          10363,
+          10366,
+          14614
+        ],
+        "gold_passage_snippet": "PID 14617: Use a lipsalve aka chapstick on the hinges, push it into the gaps between the two hinge leaves with your fingers. It also works on swinging shower screens. Oil runs out, lipsalve just stays put....",
+        "bm25_rank1": {
+          "pid": 146856,
+          "snippet": "I think it all depends on yourself. Just remember that if someone is intruding in your garage already they can pretty much break that door without to much disturbance form outside. If your concern is "
+        },
+        "dense_rank1": {
+          "pid": 160203,
+          "snippet": "Any door should open easily by hand. Its a common misconception that garage doors are heavy and need motor drives to lift them. Nope. You dont have to lift the door at all. They have a spring mechanis"
+        },
+        "hybrid_rank1": {
+          "pid": 146857,
+          "snippet": "It mostly depends on the type of garage door (composite slider, thin aluminium, or solid wood flip up etc... ) but generally the automated motors connected to your door are extremely tough at preventi"
+        }
+      },
+      {
+        "qid": 79,
+        "query": "are all synths the same?",
+        "gold_pids": [
+          90950,
+          91018,
+          86347,
+          86342
+        ],
+        "gold_passage_snippet": "PID 90950: Most analog VCOs generate almost perfect mathematical waveforms (almost because of minor instabilities/noise but its usually below -60db). But you dont sample VCO, there are many elements in the signal path.. Like high pass filters used to kill DC, u...",
+        "bm25_rank1": {
+          "pid": 115394,
+          "snippet": "What I hear is not a 2 over 3, but a 4 over 3 pattern going on. I transcribed what I hear and explain it progressively so it is clear. I used chrome song maker to make the graphics. You can go there a"
+        },
+        "dense_rank1": {
+          "pid": 120549,
+          "snippet": "It may be true that every synth is just some oscillators, filters and envelopes, but like @Tetsujuin said in the comments, thats the same thing with cars, they each have 2 or 3 pedals. So what is diff"
+        },
+        "hybrid_rank1": {
+          "pid": 120549,
+          "snippet": "It may be true that every synth is just some oscillators, filters and envelopes, but like @Tetsujuin said in the comments, thats the same thing with cars, they each have 2 or 3 pedals. So what is diff"
+        }
+      }
+    ]
+  },
+  "cross_encoder_reranker": {
+    "model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+    "top_k_reranked": 50,
+    "device": "cuda",
+    "inference_time_seconds": 91.98,
+    "metrics": {
+      "P@10": 0.1552,
+      "Recall@100": 0.7903,
+      "MAP": 0.3997,
+      "nDCG@10": 0.4788
+    }
+  },
+  "rag_30_query_evaluation": {
+    "num_queries_evaluated": 30,
+    "gold_present_condition": {
+      "citation_validity_rate": 100.0,
+      "abstention_rate": 0.0
+    },
+    "gold_missing_condition": {
+      "abstention_rate": 0.0
+    },
+    "detailed_samples": [
+      {
+        "qid": 66,
+        "query": "what is the difference between all mountain and freeride?",
+        "gold_pids": [
+          60327
+        ],
+        "condition_present": {
+          "answer": "Because Im a mountain bike guy, and I think the stories and shots are way more interesting (sorry roadies): Where The Trail Ends Strength in Numbers Life Cycles Wont Back Down Rad Company And of course all the old-school freeride films like Kranked. [3] The different types of snowboards are: All-mountain: Versatile snowboards that can be used on all parts of the mountain, including machine-groomed runs, backcountry, and park and pipe. [2]",
+          "cited_indices": [
+            2,
+            3
+          ],
+          "citations_valid": true,
+          "is_not_found": false
+        },
+        "condition_missing": {
+          "answer": "Because Im a mountain bike guy, and I think the stories and shots are way more interesting (sorry roadies): Where The Trail Ends Strength in Numbers Life Cycles Wont Back Down Rad Company And of course all the old-school freeride films like Kranked. [2] He pulls out his map, finds a route around it, and continues up the mountain. [4]",
+          "is_not_found": false
+        }
+      },
+      {
+        "qid": 12,
+        "query": "is my corn snake overweight?",
+        "gold_pids": [
+          1152
+        ],
+        "condition_present": {
+          "answer": "If youre seeing the skin between the scales otherwise, then your snake is definitely overweight. [1] An overweight snake will be rounded, sometimes almost perfectly, with sides of the belly not able to touch the ground. [1]",
+          "cited_indices": [
+            1
+          ],
+          "citations_valid": true,
+          "is_not_found": false
+        },
+        "condition_missing": {
+          "answer": "House only one corn snake to a cage. [1] Cage Substrate Corn Snake: Most breeders use aspen shavings as bedding because it is absorbent, soft and holds its shape when snakes burrow. [1]",
+          "is_not_found": false
+        }
+      },
+      {
+        "qid": 175,
+        "query": "is all acrylic paint latex?",
+        "gold_pids": [
+          154841,
+          125850
+        ],
+        "condition_present": {
+          "answer": "My understanding is that some of these are acrylic-based (basically a suspension of acrylic paint in latex with additives like ammonia to control coagulation). [3] Some people do add acrylic paint to latex, often diluting it with a little ammonia. [3]",
+          "cited_indices": [
+            3
+          ],
+          "citations_valid": true,
+          "is_not_found": false
+        },
+        "condition_missing": {
+          "answer": "My understanding is that some of these are acrylic-based (basically a suspension of acrylic paint in latex with additives like ammonia to control coagulation). [2] Some people do add acrylic paint to latex, often diluting it with a little ammonia. [2]",
+          "is_not_found": false
+        }
+      },
+      {
+        "qid": 156,
+        "query": "are electrical outlets on studs?",
+        "gold_pids": [
+          127881,
+          127879
+        ],
+        "condition_present": {
+          "answer": "If you dont need the support of a stud, then just poking a hole in the drywall should be well short of any line that is running between studs, however, it doesnt hurt to exercise a bit of extra caution if your near the height of nearby outlets. [1] Yes, in general electrical outlets are installed directly next to a stud. [2]",
+          "cited_indices": [
+            1,
+            2
+          ],
+          "citations_valid": true,
+          "is_not_found": false
+        },
+        "condition_missing": {
+          "answer": "If you dont need the support of a stud, then just poking a hole in the drywall should be well short of any line that is running between studs, however, it doesnt hurt to exercise a bit of extra caution if your near the height of nearby outlets. [1] Electrical cable needs to be stapled to the side of the studs, halfway between the two walls, to minimize the risk that anyone will nail or screw into the electrical wire and electrocute themselves. [5]",
+          "is_not_found": false
+        }
+      },
+      {
+        "qid": 139,
+        "query": "do re mi equivalent a b c?",
+        "gold_pids": [
+          78475,
+          78476,
+          78507,
+          78494
+        ],
+        "condition_present": {
+          "answer": "For reference, here again is the equivalence chart: Do-Re-Mi-Fa-Sol-La-Ti C---D--E---F--G---A--B The easy ones are Mi - E because they rhyme Fa - F because they start with the same letter. [3] Do-Re-Mi-Fa-Sol-La-Ti C--D--E--F--G---A--B But in the case of D Major: Sol is the A note. [4]",
+          "cited_indices": [
+            3,
+            4
+          ],
+          "citations_valid": true,
+          "is_not_found": false
+        },
+        "condition_missing": {
+          "answer": "For reference, here again is the equivalence chart: Do-Re-Mi-Fa-Sol-La-Ti C---D--E---F--G---A--B The easy ones are Mi - E because they rhyme Fa - F because they start with the same letter. [2] Do-Re-Mi-Fa-Sol-La-Ti C--D--E--F--G---A--B But in the case of D Major: Sol is the A note. [3]",
+          "is_not_found": false
+        }
+      }
+    ]
+  }
+}
